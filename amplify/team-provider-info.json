@@ -10,6 +10,11 @@
       "StackName": "amplify-blog-dev-799f2",
       "StackId": "arn:aws:cloudformation:us-west-2:637423649331:stack/amplify-blog-dev-799f2/c4aad850-29f2-11ef-bebb-0277a3e5753b",
       "AmplifyAppId": "d1g0h7385lr6o9"
+    },
+    "categories": {
+      "api": {
+        "blog": {}
+      }
     }
   }
 }
