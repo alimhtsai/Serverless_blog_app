@@ -19,10 +19,10 @@ export default function Home() {
 
   return (
     <div className="mt-3 mb-3 ml-5">
-      <h1 className="text-black text-4xl font-bold mb-3">Blog Posts</h1>
+      <h1 className="text-black text-2xl font-bold mb-3">Blog Posts</h1>
         {posts.map((post, index) => (
           <div key={index}>
-            <h2 className="text-2xl font-bold">{post.title}</h2>
+            <h2 className="font-bold">{post.title}</h2>
 			<p className="mb-3">{post.content}</p>
           </div>
         ))}
