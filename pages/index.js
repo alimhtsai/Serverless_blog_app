@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { listPosts } from "./../src/graphql/queries";

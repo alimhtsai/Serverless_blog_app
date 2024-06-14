@@ -4,10 +4,10 @@ import "../configureAmplify";
 import Navbar from "./components/navbar";
 
 export default function App({ Component, pageProps }) {
-  return(
-    <div>
-		<Navbar></Navbar>
-		<Component {...pageProps} />
-	</div>
-  ) 
+    return(
+        <div>
+            <Navbar></Navbar>
+            <Component {...pageProps} />
+        </div>
+    ) 
 }
