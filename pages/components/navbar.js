@@ -31,7 +31,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className='flex justify-center pt-3 pb-3 space-x-4 bg-light' data-bs-theme="light">
+        <nav className='flex justify-center pt-3 pb-3 space-x-4 bg-neutral-400'>
             <a className="flex items-center space-x-4">
                 <span className="self-center text-2xl font-semibold me-3">🐈‍⬛ Kiki's Blog</span>
             </a>
@@ -40,13 +40,13 @@ const Navbar = () => {
                 ["Create Post", "/create_post"],
                 ["Profile", "/profile"],
             ].map(([title, url], index) => (
-                <Link href={url} key={index} className='px-3 py-2 text-1xl font-semibold hover:text-orange-400' legacyBehavior>
-                    <a className='px-3 py-2 text-1xl font-semibold hover:text-orange-400'>{title}</a>
+                <Link href={url} key={index} className='px-3 py-2 text-1xl font-semibold hover:text-white' legacyBehavior>
+                    <a className='px-3 py-2 text-1xl font-semibold hover:text-white'>{title}</a>
                 </Link>
             ))}
             {signedUser && (
-                <Link href='/my_posts' className='px-3 py-2 text-1xl font-semibold hover:text-orange-400' legacyBehavior>
-                    <a className='px-3 py-2 text-1xl font-semibold hover:text-orange-400'>My Posts</a>
+                <Link href='/my_posts' className='px-3 py-2 text-1xl font-semibold hover:text-white' legacyBehavior>
+                    <a className='px-3 py-2 text-1xl font-semibold hover:text-white'>My Posts</a>
                 </Link>
             )}
         </nav>
