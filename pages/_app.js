@@ -1,3 +1,4 @@
+import 'bootswatch/dist/cosmo/bootstrap.min.css';
 import "@/styles/globals.css";
 import "../configureAmplify";
 
