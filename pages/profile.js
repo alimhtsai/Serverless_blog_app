@@ -20,9 +20,13 @@ function Profile() {
 
     return (
         <div className="mt-16 mb-6 ml-16 me-16">
-            <h1 className="text-black text-3xl font-bold mb-3 mt-6">Profile</h1>
-            <div className="font-semibold text-1xl text-black my-2">Username: {user.username}</div>
-            <div className="font-semibold text-1xl text-black mb-6">Email: {user.attributes.email}</div>
+            <h1 className="text-3xl font-bold mb-3 mt-6">Profile</h1>
+            <div className="font-semibold text-2xl my-2">Username: 
+                <b className="text-orange-600"> {user.username}</b>
+            </div>
+            <div className="font-semibold text-2xl mb-6">Email: 
+                <b className="text-orange-600"> {user.attributes.email}</b>
+            </div>
             <div className="col-2"><AmplifySignOut /></div>
         </div>
     )

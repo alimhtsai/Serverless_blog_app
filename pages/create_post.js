@@ -33,12 +33,12 @@ function CreatePost() {
             variables: { input: post },
             authMode: "AMAZON_COGNITO_USER_POOLS"
         })
-        // router.push(`/post/${id}`)
+        router.push(`/posts/${id}`)
     }
     
     return (
         <div className="mt-16 mb-6 ml-16 me-16">
-            <h1 className="text-black text-3xl font-bold mb-3 mt-6">Create a New Post</h1>
+            <h1 className="text-3xl font-bold mb-3 mt-6">Create a New Post</h1>
             <input
                 onChange={onChange}
                 name="title"

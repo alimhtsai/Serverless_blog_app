@@ -9,6 +9,11 @@ export default function Home() {
         fetchPosts();
     })
 
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleString();
+    }
+
     async function fetchPosts() {
         const postData = await API.graphql({
             query: listPosts
@@ -18,11 +23,11 @@ export default function Home() {
 
     return (
         <div className="mt-16 mb-6 ml-16 me-16">
-            <h1 className="text-black text-3xl font-bold mb-3 mt-6">Blog Posts</h1>
+            <h1 className="text-3xl font-bold mb-3 mt-6">Blog Posts</h1>
                 {posts.map((post, index) => (
                     <div key={index}>
                         <h2 className="font-bold text-2xl mb-1 mt-3">{post.title}</h2>
-                        <p className="text-gray-500">{post.createdAt}</p>
+                        <p className="text-gray-500">{formatDate(post.createdAt)}</p>
                         <p className="text-orange-600">{post.content}</p>
                     </div>
                 ))}
