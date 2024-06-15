@@ -37,28 +37,29 @@ function CreatePost() {
     }
     
     return (
-        <div className="mt-16 mb-6 ml-16 me-16">
-            <h1 className="text-3xl font-bold mb-3 mt-6">Create a New Post</h1>
-            <input
-                onChange={onChange}
-                name="title"
-                placeholder="Title"
-                value={post.title}
-                className="border-b pb-2 text-lg my-4 focus:outline-none w-full 
-                           font-light text-gray-500 placeholder-gray-500 y-2"
-            />
-            <SimpleMDE
-                value={post.content}
-                onChange={(value) =>
-                    setPost({...post, content: value})
-                }
-            />
-            
-            <button type="button" 
-                    className="btn btn-dark mb-4 font-semibold px-8 py-2 rounded" 
-                    onClick={createNewPost}>
-                POST
-            </button>
+        <div className="grid grid-cols-6 gap-2 mt-6 mb-6">
+            <div className="col-start-2 col-end-6 font-bold text-3xl mb-1 mt-6">Create a New Post</div>
+            <div className="col-start-2 col-end-6">
+                <input
+                    onChange={onChange}
+                    name="title"
+                    placeholder="Title"
+                    value={post.title}
+                    className="border-b pb-2 text-lg my-4 focus:outline-none w-full 
+                            font-light text-gray-500 placeholder-gray-500 y-2"
+                />
+                <SimpleMDE
+                    value={post.content}
+                    onChange={(value) =>
+                        setPost({...post, content: value})
+                    }
+                />
+                <button type="button" 
+                        className="btn btn-dark mb-4 font-semibold px-8 py-2 rounded" 
+                        onClick={createNewPost}>
+                    POST
+                </button>
+            </div>
         </div>
     )
 }

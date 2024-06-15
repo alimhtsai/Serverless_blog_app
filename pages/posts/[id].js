@@ -17,11 +17,13 @@ export default function Post({ post }) {
     }
 
     return (
-        <div className="mt-16 mb-6 ml-16 me-16">
-            <h1 className="font-bold text-3xl mb-1 mt-3">🎉 You just post something to Kiki's land! 🎊</h1>
-            <h2 className="font-bold text-2xl mb-1 mt-3 text-orange-600">{post.title}</h2>
-            <p className="text-orange-600">{formatDate(post.createdAt)}</p>
-            <p className="text-orange-600">{post.content}</p>
+        <div className="grid grid-cols-6 gap-2 mt-6 mb-6">
+            <div className="col-start-2 col-end-6 font-bold text-3xl mb-1 mt-6">{post.title}</div>
+            <div className="col-start-5 col-end-6 text-gray-500">{formatDate(post.createdAt)}</div>
+            <div className="col-start-5 col-end-6 text-gray-500">By {post.username}</div>
+            <div className="col-start-2 col-end-6 mt-3">
+                <p ReactMarkDown="prose">{post.content}</p>
+            </div>
         </div>
     )
 }
@@ -46,6 +48,7 @@ export async function getStaticProps({ params }) {
         variables: {id}
     })
     return {
-        props: {post: postData.data.getPost}
+        props: {post: postData.data.getPost},
+        revalidate: 1
     }
 }
