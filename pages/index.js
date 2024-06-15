@@ -17,12 +17,13 @@ export default function Home() {
     }
 
     return (
-        <div className="mt-3 mb-3 ml-5">
-            <h1 className="text-black text-2xl font-bold mb-3 mt-6">Blog Posts</h1>
+        <div className="mt-16 mb-6 ml-16 me-16">
+            <h1 className="text-black text-3xl font-bold mb-3 mt-6">Blog Posts</h1>
                 {posts.map((post, index) => (
                     <div key={index}>
-                        <h2 className="font-bold">{post.title}</h2>
-                        <p className="mb-3">{post.content}</p>
+                        <h2 className="font-bold text-2xl mb-1 mt-3">{post.title}</h2>
+                        <p className="text-gray-500">{post.createdAt}</p>
+                        <p className="text-orange-600">{post.content}</p>
                     </div>
                 ))}
         </div>
