@@ -8,10 +8,19 @@ import { Auth, Hub} from "aws-amplify";
 
 const Navbar = () => {
     const [signedUser, setSignedUser] = useState(false);
+    const [username, setUserName] = useState([]);
 
     useEffect(() => {
-        authListener()
+        authListener();
+        getUserName();
     }, []);
+
+    async function getUserName() {
+        if (signedUser) {
+            const { username } = await Auth.currentAuthenticatedUser();
+            setUserName(username);
+        } 
+    }
 
     async function authListener() {
         Hub.listen("auth", (data) => {
@@ -38,12 +47,16 @@ const Navbar = () => {
             {[
                 ["Home", "/"],
                 ["Create Post", "/create_post"],
-                ["Profile", "/profile"],
             ].map(([title, url], index) => (
                 <Link href={url} key={index} className='px-3 py-2 text-1xl font-semibold hover:text-white' legacyBehavior>
                     <a className='px-3 py-2 text-1xl font-semibold hover:text-white'>{title}</a>
                 </Link>
             ))}
+            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <Link href={`/profile`} className='px-3 py-2 text-1xl font-semibold hover:text-white' legacyBehavior>
+                    <a className='px-3 py-2 text-1xl underline'>Hi! <b className="hover:text-white">{username}</b></a>
+                </Link>
+            </div>
             {signedUser && (
                 <Link href='/my_posts' className='px-3 py-2 text-1xl font-semibold hover:text-white' legacyBehavior>
                     <a className='px-3 py-2 text-1xl font-semibold hover:text-white'>My Posts</a>
