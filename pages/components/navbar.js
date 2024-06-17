@@ -16,18 +16,18 @@ const Navbar = () => {
     }, []);
 
     async function getUserName() {
-        if (signedUser) {
-            const { username } = await Auth.currentAuthenticatedUser();
-            setUserName(username);
-        } 
+        const { username } = await Auth.currentAuthenticatedUser();
+        setUserName(username);
     }
 
     async function authListener() {
         Hub.listen("auth", (data) => {
             switch (data.payload.event) {
                 case "signIn":
+                    getUserName();
                     return setSignedUser(true);
                 case "signOut":
+                    setUserName([]);
                     return setSignedUser(false);
             }
         })

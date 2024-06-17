@@ -20,7 +20,7 @@ export default function Post({ post }) {
             </div>
             <div className="col-start-5 col-end-6 text-gray-500">By {post.username}</div>
             <div className="col-start-2 col-end-6 mt-3">
-                <p ReactMarkDown="prose">{post.content}</p>
+                <ReactMarkDown className="prose" children={post.content}/>
             </div>
         </div>
     )
