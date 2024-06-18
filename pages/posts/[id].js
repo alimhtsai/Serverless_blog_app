@@ -20,7 +20,6 @@ export default function Post({ post }) {
             setCoverImage(imageKey);
         }
     }
-
     
     if (router.isFallback) {
         return <div>Loading...</div>
