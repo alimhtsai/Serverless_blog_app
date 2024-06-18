@@ -1,4 +1,4 @@
-import { API, Auth } from "aws-amplify";
+import { API, Auth, Storage } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { postsByUsername } from "@/src/graphql/queries";
 import Link from "next/link";
@@ -21,8 +21,16 @@ function MyPosts() {
             query: postsByUsername,
             variables: { username }
         })
-        console.log(username, postData);
-        setPosts(postData.data.postsByUsername.items)
+        const { items } = postData.data.postsByUsername;
+        const postWithImage = await Promise.all(
+            items.map(async (post) => {
+                if (post.coverImage) {
+                    post.coverImage = await Storage.get(post.coverImage);
+                }
+                return post;
+            })
+        )
+        setPosts(postWithImage);
     }
 
     async function deletePost(id) {
@@ -40,6 +48,10 @@ function MyPosts() {
             <div className="col-start-2 col-end-6 font-bold text-3xl mb-1 mt-6">My Posts</div>
             {posts.map((post, index) => (
                 <div className="col-start-2 col-end-6 mt-3">
+                    {post.coverImage && (
+                        <img src={post.coverImage}
+                        className="object-cover w-44 bg-contain bg-center sm:mx-0 sm:shrink-0 mb-2"/>
+                    )}
                     <Link key={index} href={`/posts/${post.id}`}>
                         <div key={index} className="cursor-pointer border-b pb-3">
                             <h2 className="font-bold text-2xl mb-1 hover:text-orange-500">{post.title}</h2>

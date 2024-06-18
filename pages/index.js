@@ -41,8 +41,9 @@ export default function Home() {
                             <h2 className="font-bold text-2xl mb-1">{post.title}</h2>
                             <p className="text-gray-500">
                                 <Moment format="YYYY/MM/DD HH:MM:SS">{post.createdAt}</Moment>
+                                <p>By {post.username}</p>
                             </p>
-                            <p className="text-gray-500">
+                            <p className="text-black">
                                 {post.content.length > 100 ? post.content.substring(0, 100) + ' ... (more)' : post.content}
                             </p>
                         </div>
