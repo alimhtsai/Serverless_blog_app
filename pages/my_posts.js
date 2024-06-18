@@ -41,6 +41,7 @@ function MyPosts() {
             authMode: "AMAZON_COGNITO_USER_POOLS"
         });
         fecthPosts();
+        router.push(`/my_posts`);
     }
 
     return (
@@ -54,15 +55,25 @@ function MyPosts() {
                     )}
                     <Link key={index} href={`/posts/${post.id}`}>
                         <div key={index} className="cursor-pointer border-b pb-3">
-                            <h2 className="font-bold text-2xl mb-1 hover:text-orange-500">{post.title}</h2>
-                            <p className="text-gray-500">
-                                <Moment format="YYYY/MM/DD HH:MM:SS">{post.createdAt}</Moment>
+                            <h2 className="font-bold text-2xl mb-1 hover:text-orange-500">
+                                {post.title}
+                            </h2>
+                            <p className="text-gray-500 hover:text-orange-500">
+                                <Moment format="YYYY/MM/DD HH:MM:SS">
+                                    {post.createdAt}
+                                </Moment>
                             </p>
-                            <p className="text-gray-500">{post.content}</p>
-                            <button className='text-sm mr-4 hover:text-blue-500'>
-                                <Link href={`/edit_post/${post.id}`}>Edit Post</Link>
+                            <p className="text-black-700 hover:text-orange-500">
+                                {post.content.length > 100 ? post.content.substring(0, 100) + ' ... (more)' : post.content}
+                            </p>
+                            <button className='btn btn-outline-primary cursor-pointer text-sm mr-4 mt-2 rounded'>
+                                <Link href={`/edit_post/${post.id}`}>
+                                    Edit Post
+                                </Link>
                             </button>
-                            <button className='text-sm mr-4 hover:text-red-500' onClick={() => deletePost(post.id)}>
+                            <button className='btn btn-outline-warning cursor-pointer text-sm mr-4 mt-2 rounded' 
+                                onClick={() => deletePost(post.id)}
+                            >
                                 Delete Post
                             </button>
                         </div>

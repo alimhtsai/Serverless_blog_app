@@ -27,17 +27,23 @@ export default function Post({ post }) {
 
     return (
         <div className="grid grid-cols-6 gap-2 mt-6 mb-6">
-            <div className="col-start-2 col-end-6 font-bold text-3xl mb-1 mt-6">{post.title}</div>
-            <div className="col-start-5 col-end-6 text-gray-500">
-                <Moment format="YYYY/MM/DD HH:MM:SS">{post.createdAt}</Moment>
+            <div className="col-start-2 col-end-6 font-bold text-3xl mb-1 mt-6">
+                {post.title}
             </div>
-            <div className="col-start-5 col-end-6 text-gray-500">By {post.username}</div>
+            <div className="col-start-5 col-end-6 text-gray-500">
+                <Moment format="YYYY/MM/DD HH:MM:SS">
+                    {post.createdAt}
+                </Moment>
+            </div>
+            <div className="col-start-5 col-end-6 text-gray-500">
+                By {post.username}
+            </div>
             <div className="col-start-2 col-end-6">
                 {coverImage && (
-                        <img 
-                            src={coverImage}
-                            className="mt-4"
-                        />
+                    <img 
+                        src={coverImage}
+                        className="mt-4"
+                    />
                 )}
             </div>
             <div className="col-start-2 col-end-6 mt-3">

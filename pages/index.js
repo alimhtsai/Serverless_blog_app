@@ -37,13 +37,13 @@ export default function Home() {
                             <img src={post.coverImage}
                             className="object-cover w-44 bg-contain bg-center sm:mx-0 sm:shrink-0 mb-2"/>
                         )}
-                        <div key={index} className="cursor-pointer border-b pb-3 hover:text-orange-500">
-                            <h2 className="font-bold text-2xl mb-1">{post.title}</h2>
-                            <p className="text-gray-500">
+                        <div key={index} className="cursor-pointer border-b pb-3">
+                            <h2 className="font-bold text-2xl mb-1 hover:text-orange-500">{post.title}</h2>
+                            <p className="text-gray-500 hover:text-orange-500">
                                 <Moment format="YYYY/MM/DD HH:MM:SS">{post.createdAt}</Moment>
                                 <p>By {post.username}</p>
                             </p>
-                            <p className="text-black">
+                            <p className="text-black-700 hover:text-orange-500">
                                 {post.content.length > 100 ? post.content.substring(0, 100) + ' ... (more)' : post.content}
                             </p>
                         </div>
