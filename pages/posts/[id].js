@@ -8,6 +8,20 @@ import Moment from 'react-moment';
 
 export default function Post({ post }) {
     const router = useRouter();
+    const [coverImage, setCoverImage] = useState(null);
+
+    useEffect(() => {
+        updateCoverImage();
+    }, []);
+
+    async function updateCoverImage() {
+        if (post.coverImage) {
+            const imageKey = await Storage.get(post.coverImage);
+            setCoverImage(imageKey);
+        }
+    }
+
+    
     if (router.isFallback) {
         return <div>Loading...</div>
     }
@@ -19,6 +33,14 @@ export default function Post({ post }) {
                 <Moment format="YYYY/MM/DD HH:MM:SS">{post.createdAt}</Moment>
             </div>
             <div className="col-start-5 col-end-6 text-gray-500">By {post.username}</div>
+            <div className="col-start-2 col-end-6">
+                {coverImage && (
+                        <img 
+                            src={coverImage}
+                            className="mt-4"
+                        />
+                )}
+            </div>
             <div className="col-start-2 col-end-6 mt-3">
                 <ReactMarkDown className="prose" children={post.content}/>
             </div>
