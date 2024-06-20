@@ -15,7 +15,7 @@ import { v4 as uuid } from "uuid";
 
 const initialState = { message: "" };
 
-export default function Post({ post }) {
+export default function Post({ post, allComments }) {
     const router = useRouter();
     const [coverImage, setCoverImage] = useState(null);
     const [comment, setComment] = useState(initialState);
@@ -82,8 +82,25 @@ export default function Post({ post }) {
             <div className="col-start-2 col-end-6 mt-3">
                 <ReactMarkDown className="prose" children={post.content}/>
             </div>
-            <div className="col-start-2 col-end-6 mt-3">
-
+            <div className="col-start-2 col-end-6 font-semibold text-2xl mt-12">
+                Comments
+            </div>
+            <div className="col-start-2 col-end-6">
+                {
+                    post.comments.items.length > 0 && post.comments.items.map((comment, index) => (
+                        <div key={index} className="shadow-inner mt-3 mb-3 pl-3 pt-1 pb-2 rounded-xl hover:shadow-lg" >
+                            <div>
+                                <p className="text-gray-500 mt-2">
+                                <b>{comment.createdBy} says: &nbsp;</b>
+                                <p className="pe-3">{comment.message}</p>
+                                <Moment format="YYYY/MM/DD HH:MM:SS" style={{display: 'flex', justifyContent: 'flex-end'}} className="pe-3 pt-1">
+                                    {post.createdAt}
+                                </Moment>
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
             <div className="col-start-2 col-end-6">
                 <button type="button" 
