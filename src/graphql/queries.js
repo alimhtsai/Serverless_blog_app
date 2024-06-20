@@ -10,8 +10,14 @@ export const getPost = /* GraphQL */ `
       username
       coverImage
       comments {
-        nextToken
-        __typename
+        items {
+          id
+          message
+          postID
+          createdAt
+          updatedAt
+          createdBy
+        }
       }
       createdAt
       updatedAt
@@ -32,6 +38,16 @@ export const listPosts = /* GraphQL */ `
         content
         username
         coverImage
+        comments {
+          items {
+            id
+            message
+            postID
+            createdAt
+            updatedAt
+            createdBy
+          }
+        }
         createdAt
         updatedAt
         __typename

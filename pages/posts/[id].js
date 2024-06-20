@@ -55,7 +55,7 @@ export default function Post({ post }) {
         } catch (error) {
             console.error(error);
         }
-        router.push("/my_posts");
+        router.push("/");
     }
 
     return (
